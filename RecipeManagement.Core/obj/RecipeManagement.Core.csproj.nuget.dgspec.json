@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Administrator\\Desktop\\新建文件夹 (3)\\SDP-Assessment-2-Assignment-Part-A\\RecipeManager\\RecipeManagement.Core\\RecipeManagement.Core.csproj": {}
+    "C:\\Users\\Administrator\\Desktop\\新建文件夹 (3)\\SDP-Assessment-2-Assignment-Part-B\\RecipeManagement.Core\\RecipeManagement.Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Administrator\\Desktop\\新建文件夹 (3)\\SDP-Assessment-2-Assignment-Part-A\\RecipeManager\\RecipeManagement.Core\\RecipeManagement.Core.csproj": {
+    "C:\\Users\\Administrator\\Desktop\\新建文件夹 (3)\\SDP-Assessment-2-Assignment-Part-B\\RecipeManagement.Core\\RecipeManagement.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\新建文件夹 (3)\\SDP-Assessment-2-Assignment-Part-A\\RecipeManager\\RecipeManagement.Core\\RecipeManagement.Core.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\新建文件夹 (3)\\SDP-Assessment-2-Assignment-Part-B\\RecipeManagement.Core\\RecipeManagement.Core.csproj",
         "projectName": "RecipeManagement.Core",
-        "projectPath": "C:\\Users\\Administrator\\Desktop\\新建文件夹 (3)\\SDP-Assessment-2-Assignment-Part-A\\RecipeManager\\RecipeManagement.Core\\RecipeManagement.Core.csproj",
+        "projectPath": "C:\\Users\\Administrator\\Desktop\\新建文件夹 (3)\\SDP-Assessment-2-Assignment-Part-B\\RecipeManagement.Core\\RecipeManagement.Core.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\Desktop\\新建文件夹 (3)\\SDP-Assessment-2-Assignment-Part-A\\RecipeManager\\RecipeManagement.Core\\obj\\",
+        "outputPath": "C:\\Users\\Administrator\\Desktop\\新建文件夹 (3)\\SDP-Assessment-2-Assignment-Part-B\\RecipeManagement.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config"

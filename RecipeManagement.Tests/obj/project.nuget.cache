@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VgfjVc561Bs=",
+  "dgSpecHash": "C2IgaSRsOEo=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Administrator\\Desktop\\新建文件夹 (3)\\SDP-Assessment-2-Assignment-Part-A\\RecipeManager\\RecipeManagement.Tests\\RecipeManagement.Tests.csproj",
+  "projectFilePath": "C:\\Users\\Administrator\\Desktop\\新建文件夹 (3)\\SDP-Assessment-2-Assignment-Part-B\\RecipeManagement.Tests\\RecipeManagement.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\coverlet.collector\\6.0.4\\coverlet.collector.6.0.4.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.codecoverage\\17.14.1\\microsoft.codecoverage.17.14.1.nupkg.sha512",

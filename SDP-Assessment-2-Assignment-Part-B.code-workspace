@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "SDP-Assessment-2-Assignment-Part-B",
+			"path": "."
+		},
+		{
+			"name": "RecipeManager",
+			"path": "../SDP-Assessment-2-Assignment-Part-A/RecipeManager"
+		}
+	],
+	"settings": {}
+}

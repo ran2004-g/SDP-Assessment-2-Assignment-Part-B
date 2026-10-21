@@ -935,11 +935,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\新建文件夹 (3)\\SDP-Assessment-2-Assignment-Part-A\\RecipeManager\\RecipeManagement.Tests\\RecipeManagement.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\新建文件夹 (3)\\SDP-Assessment-2-Assignment-Part-B\\RecipeManagement.Tests\\RecipeManagement.Tests.csproj",
       "projectName": "RecipeManagement.Tests",
-      "projectPath": "C:\\Users\\Administrator\\Desktop\\新建文件夹 (3)\\SDP-Assessment-2-Assignment-Part-A\\RecipeManager\\RecipeManagement.Tests\\RecipeManagement.Tests.csproj",
+      "projectPath": "C:\\Users\\Administrator\\Desktop\\新建文件夹 (3)\\SDP-Assessment-2-Assignment-Part-B\\RecipeManagement.Tests\\RecipeManagement.Tests.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Administrator\\Desktop\\新建文件夹 (3)\\SDP-Assessment-2-Assignment-Part-A\\RecipeManager\\RecipeManagement.Tests\\obj\\",
+      "outputPath": "C:\\Users\\Administrator\\Desktop\\新建文件夹 (3)\\SDP-Assessment-2-Assignment-Part-B\\RecipeManagement.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -955,8 +955,8 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\Users\\Administrator\\Desktop\\新建文件夹 (3)\\SDP-Assessment-2-Assignment-Part-A\\RecipeManager\\RecipeManagement.Core\\RecipeManagement.Core.csproj": {
-              "projectPath": "C:\\Users\\Administrator\\Desktop\\新建文件夹 (3)\\SDP-Assessment-2-Assignment-Part-A\\RecipeManager\\RecipeManagement.Core\\RecipeManagement.Core.csproj"
+            "C:\\Users\\Administrator\\Desktop\\新建文件夹 (3)\\SDP-Assessment-2-Assignment-Part-B\\RecipeManagement.Core\\RecipeManagement.Core.csproj": {
+              "projectPath": "C:\\Users\\Administrator\\Desktop\\新建文件夹 (3)\\SDP-Assessment-2-Assignment-Part-B\\RecipeManagement.Core\\RecipeManagement.Core.csproj"
             }
           }
         }

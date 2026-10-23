@@ -267,3 +267,21 @@ public IReadOnlyList<Recipe> SearchByTitle(string searchText)
         .ToList()
         .AsReadOnly();
 }
+/// <summary>
+/// Searches recipes by ingredient using case-insensitive partial matching.
+/// </summary>
+public IReadOnlyList<Recipe> SearchByIngredient(string searchText)
+{
+    if (string.IsNullOrWhiteSpace(searchText))
+    {
+        return _recipeCatalogue.Values.ToList().AsReadOnly();
+    }
+
+    return _recipeCatalogue.Values
+        .Where(recipe => recipe.Ingredients.Any(
+            ingredient => ingredient.Contains(
+                searchText,
+                StringComparison.OrdinalIgnoreCase)))
+        .ToList()
+        .AsReadOnly();
+}

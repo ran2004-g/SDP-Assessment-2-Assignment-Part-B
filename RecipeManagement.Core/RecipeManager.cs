@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RecipeManagement.Core;
 
@@ -16,6 +17,8 @@ public sealed class RecipeManager : IRecipeManager
     private readonly LinkedList<int> _cookingPlan;
     private readonly Stack<int> _removedRecipeHistory;
     private readonly Queue<string> _activeInstructions;
+    //Prat B add
+    private readonly HashSet<int> _savedRecipes;
 
     public RecipeManager(IEnumerable<Recipe> recipes)
     {
@@ -29,6 +32,9 @@ public sealed class RecipeManager : IRecipeManager
         _cookingPlan = new LinkedList<int>();
         _removedRecipeHistory = new Stack<int>();
         _activeInstructions = new Queue<string>();
+        //Part B add function
+        _savedRecipes = new HashSet<int>();
+
 
         // Add recipes to the catalogue and validate duplicate IDs,
         // non-positive IDs, and blank titles
@@ -241,25 +247,4 @@ public sealed class RecipeManager : IRecipeManager
         return _activeInstructions.Dequeue();
     }
 
-    // Part B methods: keep these as NotImplementedException during Part A
-   public IReadOnlyList<Recipe> SearchByTitle(string searchText) =>
-    throw new NotImplementedException("Part B: implement SearchByTitle.");
-
-public IReadOnlyList<Recipe> SearchByIngredient(string searchText) =>
-    throw new NotImplementedException("Part B: implement SearchByIngredient.");
-
-public IReadOnlyList<Recipe> GetHighestProteinRecipes(int count) =>
-    throw new NotImplementedException("Part B: implement GetHighestProteinRecipes.");
-
-public bool AddSavedRecipe(int recipeId) =>
-    throw new NotImplementedException("Part B: implement AddSavedRecipe.");
-
-public bool RemoveSavedRecipe(int recipeId) =>
-    throw new NotImplementedException("Part B: implement RemoveSavedRecipe.");
-
-public bool IsRecipeSaved(int recipeId) =>
-    throw new NotImplementedException("Part B: implement IsRecipeSaved.");
-
-public IReadOnlyList<int> GetSavedRecipes() =>
-    throw new NotImplementedException("Part B: implement GetSavedRecipes.");
-}
+    

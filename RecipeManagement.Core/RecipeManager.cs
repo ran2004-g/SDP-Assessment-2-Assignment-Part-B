@@ -247,4 +247,23 @@ public sealed class RecipeManager : IRecipeManager
         return _activeInstructions.Dequeue();
     }
 
-    
+    // ========== Part B Implementation Methods ==========
+
+/// <summary>
+/// Searches recipes by title using case-insensitive partial matching.
+/// </summary>
+public IReadOnlyList<Recipe> SearchByTitle(string searchText)
+{
+    // Return all recipes if the search text is empty or contains only whitespace.
+    if (string.IsNullOrWhiteSpace(searchText))
+    {
+        return _recipeCatalogue.Values.ToList().AsReadOnly();
+    }
+
+    return _recipeCatalogue.Values
+        .Where(recipe => recipe.Title.Contains(
+            searchText,
+            StringComparison.OrdinalIgnoreCase))
+        .ToList()
+        .AsReadOnly();
+}

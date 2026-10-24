@@ -285,3 +285,24 @@ public IReadOnlyList<Recipe> SearchByIngredient(string searchText)
         .ToList()
         .AsReadOnly();
 }
+/// <summary>
+/// Returns the top N recipes with the highest protein content.
+/// </summary>
+public IReadOnlyList<Recipe> GetHighestProteinRecipes(int count)
+{
+    // Return an empty collection if the count is invalid.
+    if (count <= 0)
+    {
+        return new List<Recipe>().AsReadOnly();
+    }
+
+    return _recipeCatalogue.Values
+        // Exclude recipes without protein information.
+        .Where(recipe => recipe.Nutrition?.ProteinG.HasValue == true)
+        // Sort recipes by protein content in descending order.
+        .OrderByDescending(recipe => recipe.Nutrition!.ProteinG!.Value)
+        // Take the first count recipes.
+        .Take(count)
+        .ToList()
+        .AsReadOnly();
+}

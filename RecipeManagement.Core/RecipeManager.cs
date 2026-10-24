@@ -320,3 +320,26 @@ public bool AddSavedRecipe(int recipeId)
     // HashSet.Add automatically prevents duplicates and returns false if the ID already exists.
     return _savedRecipes.Add(recipeId);
 }
+/// <summary>
+/// Removes a recipe from the saved collection.
+/// </summary>
+public bool RemoveSavedRecipe(int recipeId)
+{
+    return _savedRecipes.Remove(recipeId);
+}
+
+/// <summary>
+/// Checks whether a recipe has been saved.
+/// </summary>
+public bool IsRecipeSaved(int recipeId)
+{
+    return _savedRecipes.Contains(recipeId);
+}
+
+/// <summary>
+/// Returns all saved recipe IDs.
+/// </summary>
+public IReadOnlyList<int> GetSavedRecipes()
+{
+    return _savedRecipes.ToList().AsReadOnly();
+}

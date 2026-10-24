@@ -306,3 +306,17 @@ public IReadOnlyList<Recipe> GetHighestProteinRecipes(int count)
         .ToList()
         .AsReadOnly();
 }
+/// <summary>
+/// Adds a recipe to the saved collection. Returns false if the recipe ID already exists.
+/// </summary>
+public bool AddSavedRecipe(int recipeId)
+{
+    // Only allow existing recipes to be saved.
+    if (!_recipeCatalogue.ContainsKey(recipeId))
+    {
+        return false;
+    }
+
+    // HashSet.Add automatically prevents duplicates and returns false if the ID already exists.
+    return _savedRecipes.Add(recipeId);
+}

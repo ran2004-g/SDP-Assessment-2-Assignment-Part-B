@@ -343,3 +343,4 @@ public IReadOnlyList<int> GetSavedRecipes()
 {
     return _savedRecipes.ToList().AsReadOnly();
 }
+}

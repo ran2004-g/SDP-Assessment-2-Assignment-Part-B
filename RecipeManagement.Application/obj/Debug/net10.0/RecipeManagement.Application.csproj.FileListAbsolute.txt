@@ -17,3 +17,23 @@
 /Users/zhangran/Desktop/sdp项目开发/RecipeManager/RecipeManagement.Application/obj/Debug/net10.0/RecipeManagement.Application.pdb
 /Users/zhangran/Desktop/sdp项目开发/RecipeManager/RecipeManagement.Application/obj/Debug/net10.0/RecipeManagement.Application.genruntimeconfig.cache
 /Users/zhangran/Desktop/sdp项目开发/RecipeManager/RecipeManagement.Application/obj/Debug/net10.0/ref/RecipeManagement.Application.dll
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Application\obj\Debug\net10.0\RecipeManagement.Application.dll
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Application\obj\Debug\net10.0\refint\RecipeManagement.Application.dll
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Application\obj\Debug\net10.0\RecipeManagement.Application.pdb
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Application\bin\Debug\net10.0\data\recipes.json
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Application\bin\Debug\net10.0\RecipeManagement.Application.exe
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Application\bin\Debug\net10.0\RecipeManagement.Application.deps.json
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Application\bin\Debug\net10.0\RecipeManagement.Application.runtimeconfig.json
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Application\bin\Debug\net10.0\RecipeManagement.Application.dll
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Application\bin\Debug\net10.0\RecipeManagement.Application.pdb
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Application\bin\Debug\net10.0\RecipeManagement.Core.dll
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Application\bin\Debug\net10.0\RecipeManagement.Core.pdb
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Application\obj\Debug\net10.0\RecipeManagement.Application.csproj.AssemblyReference.cache
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Application\obj\Debug\net10.0\RecipeManagement.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Application\obj\Debug\net10.0\RecipeManagement.Application.AssemblyInfoInputs.cache
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Application\obj\Debug\net10.0\RecipeManagement.Application.AssemblyInfo.cs
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Application\obj\Debug\net10.0\RecipeManagement.Application.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Application\obj\Debug\net10.0\RecipeManagement.Application.sourcelink.json
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Application\obj\Debug\net10.0\RecipeMa.87DAD0B0.Up2Date
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Application\obj\Debug\net10.0\RecipeManagement.Application.genruntimeconfig.cache
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Application\obj\Debug\net10.0\ref\RecipeManagement.Application.dll

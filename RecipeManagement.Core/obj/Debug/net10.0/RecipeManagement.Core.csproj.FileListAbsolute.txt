@@ -21,3 +21,15 @@
 /Users/zhangran/Documents/GitHub/SDP-Assessment-2-Assignment-Part-A/RecipeManager/RecipeManagement.Core/obj/Debug/net10.0/refint/RecipeManagement.Core.dll
 /Users/zhangran/Documents/GitHub/SDP-Assessment-2-Assignment-Part-A/RecipeManager/RecipeManagement.Core/obj/Debug/net10.0/RecipeManagement.Core.pdb
 /Users/zhangran/Documents/GitHub/SDP-Assessment-2-Assignment-Part-A/RecipeManager/RecipeManagement.Core/obj/Debug/net10.0/ref/RecipeManagement.Core.dll
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Core\obj\Debug\net10.0\RecipeManagement.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Core\obj\Debug\net10.0\RecipeManagement.Core.AssemblyInfoInputs.cache
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Core\obj\Debug\net10.0\RecipeManagement.Core.AssemblyInfo.cs
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Core\obj\Debug\net10.0\RecipeManagement.Core.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Core\obj\Debug\net10.0\RecipeManagement.Core.sourcelink.json
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Core\obj\Debug\net10.0\RecipeManagement.Core.dll
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Core\obj\Debug\net10.0\refint\RecipeManagement.Core.dll
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Core\obj\Debug\net10.0\RecipeManagement.Core.pdb
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Core\bin\Debug\net10.0\RecipeManagement.Core.deps.json
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Core\bin\Debug\net10.0\RecipeManagement.Core.dll
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Core\bin\Debug\net10.0\RecipeManagement.Core.pdb
+C:\Users\Administrator\Desktop\新建文件夹 (3)\SDP-Assessment-2-Assignment-Part-B\RecipeManagement.Core\obj\Debug\net10.0\ref\RecipeManagement.Core.dll

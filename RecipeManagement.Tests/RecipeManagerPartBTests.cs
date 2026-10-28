@@ -74,4 +74,66 @@ public sealed class RecipeManagerPartBTests
         Assert.Equal("Chicken Salad", results[1].Title);
     }
 
-    
+    [Fact]
+    public void GetHighestProteinRecipes_ZeroOrNegativeCount_ReturnsEmpty()
+    {
+        var manager = CreateTestManager();
+        Assert.Empty(manager.GetHighestProteinRecipes(0));
+        Assert.Empty(manager.GetHighestProteinRecipes(-5));
+    }
+
+    [Fact]
+    public void SavedRecipe_AddDuplicate_ReturnsFalse()
+    {
+        var manager = CreateTestManager();
+        bool first = manager.AddSavedRecipe(1);
+        bool second = manager.AddSavedRecipe(1);
+        
+        Assert.True(first);
+        Assert.False(second);
+        Assert.Single(manager.GetSavedRecipes());
+    }
+
+    [Fact]
+    public void SavedRecipe_AddNonExistentId_ReturnsFalse()
+    {
+        var manager = CreateTestManager();
+        bool result = manager.AddSavedRecipe(999);
+        
+        Assert.False(result);
+    }
+
+    [Fact]
+    public void SavedRecipe_RemoveAndCheck_WorksCorrectly()
+    {
+        var manager = CreateTestManager();
+        manager.AddSavedRecipe(1);
+        
+        Assert.True(manager.IsRecipeSaved(1));
+        Assert.True(manager.RemoveSavedRecipe(1));
+        Assert.False(manager.IsRecipeSaved(1));
+    }
+
+    [Fact]
+    public void IntegratedWorkflow_SearchSaveRemove_PartAStillWorks()
+    {
+        var manager = CreateTestManager();
+        
+       
+        var searchResults = manager.SearchByTitle("beef");
+        Assert.Single(searchResults);
+        
+        bool saved = manager.AddSavedRecipe(searchResults[0].Id);
+        Assert.True(saved);
+        Assert.True(manager.IsRecipeSaved(searchResults[0].Id));
+        
+        bool removed = manager.RemoveSavedRecipe(searchResults[0].Id);
+        Assert.True(removed);
+        Assert.Empty(manager.GetSavedRecipes());
+        
+        
+        Assert.Equal(3, manager.RecipeCount);
+        Assert.True(manager.AddRecipeToCookingPlan(1));
+        Assert.Single(manager.GetCookingPlan());
+    }
+}

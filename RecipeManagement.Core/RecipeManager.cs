@@ -1,51 +1,43 @@
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace RecipeManagement.Core;
 
-/// <summary>
-/// Implement this class using the five Part A collections as private fields:
-/// Dictionary&lt;int, Recipe&gt;, List&lt;string&gt;, LinkedList&lt;int&gt;,
-/// Stack&lt;int&gt; and Queue&lt;string&gt;.
-/// </summary>
 public sealed class RecipeManager : IRecipeManager
 {
-    // Part A: private collection fields
+    // Part A: Collection fields
     private readonly Dictionary<int, Recipe> _recipeCatalogue;
     private readonly List<string> _shoppingList;
     private readonly LinkedList<int> _cookingPlan;
     private readonly Stack<int> _removedRecipeHistory;
     private readonly Queue<string> _activeInstructions;
-    //Prat B add
+
+    // Part B: Saved recipes
     private readonly HashSet<int> _savedRecipes;
 
     public RecipeManager(IEnumerable<Recipe> recipes)
     {
-        // Validate input: null recipes are not allowed
         if (recipes == null)
             throw new ArgumentNullException(nameof(recipes));
 
-        // Initialise all collections
         _recipeCatalogue = new Dictionary<int, Recipe>();
         _shoppingList = new List<string>();
         _cookingPlan = new LinkedList<int>();
         _removedRecipeHistory = new Stack<int>();
         _activeInstructions = new Queue<string>();
-        //Part B add function
         _savedRecipes = new HashSet<int>();
 
-
-        // Add recipes to the catalogue and validate duplicate IDs,
-        // non-positive IDs, and blank titles
-        foreach (var r in recipes)
+        foreach (var recipe in recipes)
         {
-            bool ok = AddRecipe(r);
+            if (recipe == null)
+                throw new ArgumentException("Recipe cannot be null.");
 
-            if (!ok)
+            if (!AddRecipe(recipe))
             {
                 throw new ArgumentException(
-                    $"Invalid recipe id {r.Id} or duplicate / blank title");
+                    $"Invalid or duplicate recipe ID: {recipe.Id}");
             }
         }
     }
@@ -57,10 +49,10 @@ public sealed class RecipeManager : IRecipeManager
     public int PendingInstructionCount => _activeInstructions.Count;
     public int RemovedRecipeCount => _removedRecipeHistory.Count;
 
-    // Private helper method: check whether a recipe ID exists in the cooking plan
+    // Check if a recipe is already in the cooking plan
     private bool IsRecipeInCookingPlan(int recipeId)
     {
-        foreach (var id in _cookingPlan)
+        foreach (int id in _cookingPlan)
         {
             if (id == recipeId)
                 return true;
@@ -69,7 +61,8 @@ public sealed class RecipeManager : IRecipeManager
         return false;
     }
 
-    // Part A: interface method implementations
+    // ================= PART A =================
+
     public bool AddRecipe(Recipe recipe)
     {
         if (recipe == null)
@@ -94,24 +87,29 @@ public sealed class RecipeManager : IRecipeManager
         return recipe;
     }
 
-    public bool RemoveRecipe(int recipeId)
-    {
-        if (!_recipeCatalogue.ContainsKey(recipeId))
-            return false;
+    
+public bool RemoveRecipe(int recipeId)
+{
+    if (!_recipeCatalogue.ContainsKey(recipeId))
+        return false;
 
-        // Do not remove a recipe if it is currently in the cooking plan
-        if (IsRecipeInCookingPlan(recipeId))
-            return false;
+    if (IsRecipeInCookingPlan(recipeId))
+        return false;
 
-        _recipeCatalogue.Remove(recipeId);
-        return true;
-    }
+    _recipeCatalogue.Remove(recipeId);
+
+    // Remove the recipe from saved recipes as well.
+    _savedRecipes.Remove(recipeId);
+
+    return true;
+}
+
 
     public int AddIngredientsToShoppingList(int recipeId)
     {
         var recipe = FindRecipe(recipeId);
 
-        if (recipe is null)
+        if (recipe == null)
             return 0;
 
         int count = 0;
@@ -149,29 +147,21 @@ public sealed class RecipeManager : IRecipeManager
 
     public bool RemoveRecipeFromCookingPlan(int recipeId)
     {
-        LinkedListNode<int>? node = null;
         var current = _cookingPlan.First;
 
         while (current != null)
         {
             if (current.Value == recipeId)
             {
-                node = current;
-                break;
+                _cookingPlan.Remove(current);
+                _removedRecipeHistory.Push(recipeId);
+                return true;
             }
 
             current = current.Next;
         }
 
-        if (node is null)
-            return false;
-
-        _cookingPlan.Remove(node);
-
-        // Store the removed recipe ID in the history stack
-        _removedRecipeHistory.Push(recipeId);
-
-        return true;
+        return false;
     }
 
     public int? PeekLastRemovedRecipe()
@@ -189,7 +179,8 @@ public sealed class RecipeManager : IRecipeManager
 
         int id = _removedRecipeHistory.Pop();
 
-        if (_recipeCatalogue.ContainsKey(id) && !IsRecipeInCookingPlan(id))
+        if (_recipeCatalogue.ContainsKey(id) &&
+            !IsRecipeInCookingPlan(id))
         {
             _cookingPlan.AddLast(id);
             return true;
@@ -200,27 +191,26 @@ public sealed class RecipeManager : IRecipeManager
 
     public IReadOnlyList<int> GetCookingPlan()
     {
-        var list = new List<int>();
+        var result = new List<int>();
 
-        foreach (var item in _cookingPlan)
+        foreach (int id in _cookingPlan)
         {
-            list.Add(item);
+            result.Add(id);
         }
 
-        return list.AsReadOnly();
+        return result.AsReadOnly();
     }
 
     public bool StartCooking(int recipeId)
     {
         var recipe = FindRecipe(recipeId);
 
-        if (recipe is null)
+        if (recipe == null)
             return false;
 
         if (recipe.Instructions.Count == 0)
             return false;
 
-        // Clear previous instructions before starting a new recipe
         _activeInstructions.Clear();
 
         foreach (var instruction in recipe.Instructions)
@@ -247,100 +237,89 @@ public sealed class RecipeManager : IRecipeManager
         return _activeInstructions.Dequeue();
     }
 
-    // ========== Part B Implementation Methods ==========
+    // ================= PART B =================
 
-/// <summary>
-/// Searches recipes by title using case-insensitive partial matching.
-/// </summary>
-public IReadOnlyList<Recipe> SearchByTitle(string searchText)
-{
-    // Return all recipes if the search text is empty or contains only whitespace.
-    if (string.IsNullOrWhiteSpace(searchText))
+    // Search recipes by title
+    public IReadOnlyList<Recipe> SearchByTitle(string searchText)
     {
-        return _recipeCatalogue.Values.ToList().AsReadOnly();
+        if (string.IsNullOrWhiteSpace(searchText))
+        {
+            return _recipeCatalogue.Values
+                .ToList()
+                .AsReadOnly();
+        }
+
+        return _recipeCatalogue.Values
+            .Where(recipe =>
+                recipe.Title.Contains(
+                    searchText,
+                    StringComparison.OrdinalIgnoreCase))
+            .ToList()
+            .AsReadOnly();
     }
 
-    return _recipeCatalogue.Values
-        .Where(recipe => recipe.Title.Contains(
-            searchText,
-            StringComparison.OrdinalIgnoreCase))
-        .ToList()
-        .AsReadOnly();
-}
-/// <summary>
-/// Searches recipes by ingredient using case-insensitive partial matching.
-/// </summary>
-public IReadOnlyList<Recipe> SearchByIngredient(string searchText)
-{
-    if (string.IsNullOrWhiteSpace(searchText))
+    // Search recipes by ingredient
+    public IReadOnlyList<Recipe> SearchByIngredient(string searchText)
     {
-        return _recipeCatalogue.Values.ToList().AsReadOnly();
+        if (string.IsNullOrWhiteSpace(searchText))
+        {
+            return _recipeCatalogue.Values
+                .ToList()
+                .AsReadOnly();
+        }
+
+        return _recipeCatalogue.Values
+            .Where(recipe =>
+                recipe.Ingredients.Any(ingredient =>
+                    ingredient.Contains(
+                        searchText,
+                        StringComparison.OrdinalIgnoreCase)))
+            .ToList()
+            .AsReadOnly();
     }
 
-    return _recipeCatalogue.Values
-        .Where(recipe => recipe.Ingredients.Any(
-            ingredient => ingredient.Contains(
-                searchText,
-                StringComparison.OrdinalIgnoreCase)))
-        .ToList()
-        .AsReadOnly();
-}
-/// <summary>
-/// Returns the top N recipes with the highest protein content.
-/// </summary>
-public IReadOnlyList<Recipe> GetHighestProteinRecipes(int count)
-{
-    // Return an empty collection if the count is invalid.
-    if (count <= 0)
+    // Get recipes with highest protein content
+    public IReadOnlyList<Recipe> GetHighestProteinRecipes(int count)
     {
-        return new List<Recipe>().AsReadOnly();
+        if (count <= 0)
+        {
+            return new List<Recipe>().AsReadOnly();
+        }
+
+        return _recipeCatalogue.Values
+            .Where(recipe =>
+                recipe.Nutrition?.ProteinG.HasValue == true)
+            .OrderByDescending(recipe =>
+                recipe.Nutrition!.ProteinG!.Value)
+            .Take(count)
+            .ToList()
+            .AsReadOnly();
     }
 
-    return _recipeCatalogue.Values
-        // Exclude recipes without protein information.
-        .Where(recipe => recipe.Nutrition?.ProteinG.HasValue == true)
-        // Sort recipes by protein content in descending order.
-        .OrderByDescending(recipe => recipe.Nutrition!.ProteinG!.Value)
-        // Take the first count recipes.
-        .Take(count)
-        .ToList()
-        .AsReadOnly();
-}
-/// <summary>
-/// Adds a recipe to the saved collection. Returns false if the recipe ID already exists.
-/// </summary>
-public bool AddSavedRecipe(int recipeId)
-{
-    // Only allow existing recipes to be saved.
-    if (!_recipeCatalogue.ContainsKey(recipeId))
+    // Add recipe to saved recipes
+    public bool AddSavedRecipe(int recipeId)
     {
-        return false;
+        if (!_recipeCatalogue.ContainsKey(recipeId))
+            return false;
+
+        return _savedRecipes.Add(recipeId);
     }
 
-    // HashSet.Add automatically prevents duplicates and returns false if the ID already exists.
-    return _savedRecipes.Add(recipeId);
-}
-/// <summary>
-/// Removes a recipe from the saved collection.
-/// </summary>
-public bool RemoveSavedRecipe(int recipeId)
-{
-    return _savedRecipes.Remove(recipeId);
-}
+    // Remove recipe from saved recipes
+    public bool RemoveSavedRecipe(int recipeId)
+    {
+        return _savedRecipes.Remove(recipeId);
+    }
 
-/// <summary>
-/// Checks whether a recipe has been saved.
-/// </summary>
-public bool IsRecipeSaved(int recipeId)
-{
-    return _savedRecipes.Contains(recipeId);
-}
+    // Check whether recipe is saved
+    public bool IsRecipeSaved(int recipeId)
+    {
+        return _savedRecipes.Contains(recipeId);
+    }
 
-/// <summary>
-/// Returns all saved recipe IDs.
-/// </summary>
-public IReadOnlyList<int> GetSavedRecipes()
-{
-    return _savedRecipes.ToList().AsReadOnly();
-}
+    // Return saved recipe IDs
+    public IReadOnlyList<int> GetSavedRecipes()
+    {
+        return _savedRecipes.ToList().AsReadOnly();
+    }
 }
